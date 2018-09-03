@@ -19,7 +19,8 @@ namespace Practice2
                 Algorithm.HandleDialNumberWord,
                 MatrixAlgorithm.TicTacToe,
                 MatrixAlgorithm.ZeroMatrix,
-                ThreadAlgorithm.HandleFizzBuzz
+                ThreadAlgorithm.HandleFizzBuzz,
+                GraphAlgorithm.HandleGraphSearch
             };
 
             string _;

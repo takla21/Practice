@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="algorithm\Algorithm.cs" />
+    <Compile Include="algorithm\GraphAlgorithm.cs" />
     <Compile Include="algorithm\MatrixAlgorithm.cs" />
     <Compile Include="algorithm\ThreadAlgorithm.cs" />
+    <Compile Include="entities\Graph.cs" />
     <Compile Include="entities\Person.cs" />
     <Compile Include="entities\StateMachine.cs" />
     <Compile Include="extra\TicTacToe.cs" />
