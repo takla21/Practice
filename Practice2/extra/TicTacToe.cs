@@ -15,12 +15,12 @@ namespace Practice2.extra
             Game = game;
         }
 
-        public bool IsSomeoneWon() //O(n^3)
+        public bool IsSomeoneWon()
         {
             var someoneWin = false;
             for (int i = 0; i < Game.Length; i++)
             {
-                for (int j = 0; j < Game[i].Length; j++) //O(n^3)
+                for (int j = 0; j < Game[i].Length; j++)
                 {
                     char c = Game[i][j];
                     if (c != '\0')
@@ -39,7 +39,7 @@ namespace Practice2.extra
             return someoneWin;
         }
 
-        private bool SomeoneWon(int i, int j, char c, int dx, int dy, int cpt) // O(n)
+        private bool SomeoneWon(int i, int j, char c, int dx, int dy, int cpt)
         {
             int x = i + dx;
             int y = j + dy;

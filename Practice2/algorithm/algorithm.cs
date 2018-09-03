@@ -101,13 +101,13 @@ namespace Practice2.algorithm
             return resultLinkedList;
         }
 
-        private static int LivingPeople(List<Person> peoples) // O(n*y)
+        private static int LivingPeople(List<Person> peoples)
         {
             var years = new Dictionary<int, int>();
 
-            foreach (Person p in peoples) //O(n)
+            foreach (Person p in peoples)
             {
-                for (int year = p.BirthYear; year < p.DeathYear; year++) //O(y)
+                for (int year = p.BirthYear; year < p.DeathYear; year++)
                 {
                     if (years.ContainsKey(year))
                     {
@@ -120,7 +120,7 @@ namespace Practice2.algorithm
                 }
             }
 
-            return years.ToList().OrderByDescending(o => o.Value).ToList().First().Key; //O(nlog n)
+            return years.ToList().OrderByDescending(o => o.Value).ToList().First().Key;
         }
 
         private static List<string> DigitalWordGenerator(int[] digits)
@@ -148,7 +148,7 @@ namespace Practice2.algorithm
 
             var letters = new char[4][];
 
-            for (int i = 0; i < digits.Length; i++) // O(n)
+            for (int i = 0; i < digits.Length; i++)
             {
                 if (digitToLetters.ContainsKey(digits[i]))
                 {

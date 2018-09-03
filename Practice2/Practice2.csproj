@@ -47,7 +47,6 @@
     <Compile Include="entities\Person.cs" />
     <Compile Include="entities\StateMachine.cs" />
     <Compile Include="extra\TicTacToe.cs" />
-    <Compile Include="entities\Graph.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
