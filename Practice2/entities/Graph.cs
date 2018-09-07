@@ -8,21 +8,21 @@ namespace Practice2.entities
 {
     public class Graph<T>
     {
-        private Dictionary<T, GraphNode<T>> _nodes { get; }
+        private Dictionary<T, Node<T>> _nodes { get; }
         private HashSet<T> _visited { get; set; }
 
         public Graph()
         {
-            _nodes = new Dictionary<T, GraphNode<T>>();
+            _nodes = new Dictionary<T, Node<T>>();
         }
 
         public Graph(List<T> elements, int[][] vertices)
         {
-            _nodes = new Dictionary<T, GraphNode<T>>();
+            _nodes = new Dictionary<T, Node<T>>();
 
             foreach (T element in elements)
             {
-                _nodes.Add(element, new GraphNode<T>(element));
+                _nodes.Add(element, new Node<T>(element));
             }
 
             for (int i =0; i < elements.Count(); i++)
@@ -39,7 +39,7 @@ namespace Practice2.entities
             }
         }
 
-        public GraphNode<T> FindNode(T element)
+        public Node<T> FindNode(T element)
         {
             return _nodes[element];
         }
@@ -53,7 +53,7 @@ namespace Practice2.entities
 
         public void BFS(T start)
         {
-            var queue = new Queue<GraphNode<T>>();
+            var queue = new Queue<Node<T>>();
             _visited = new HashSet<T>();
             var node = _nodes[start];
             queue.Enqueue(node);
@@ -62,7 +62,7 @@ namespace Practice2.entities
             {
                 node = queue.Dequeue();
                 Console.Write($"{node.Value} -> ");
-                foreach (GraphNode<T> child in node.Children)
+                foreach (Node<T> child in node.Children)
                 {
                     if (!_visited.Contains(child.Value))
                     {
@@ -73,34 +73,17 @@ namespace Practice2.entities
             }
         }
 
-        private void DFS(GraphNode<T> node)
+        private void DFS(Node<T> node)
         {
             if (!_visited.Contains(node.Value))
             {
                 _visited.Add(node.Value);
                 Console.Write($"{node.Value} -> ");
-                foreach (GraphNode<T> child in node.Children)
+                foreach (Node<T> child in node.Children)
                 {
                     DFS(child);
                 }
             }
-        }
-    }
-
-    public class GraphNode<T>
-    {
-        public T Value { get; }
-        public List<GraphNode<T>> Children { get; }
-
-        public GraphNode(T value)
-        {
-            Value = value;
-            Children = new List<GraphNode<T>>();
-        }
-
-        public void AddChild(GraphNode<T> child)
-        {
-            Children.Add(child);
         }
     }
 }

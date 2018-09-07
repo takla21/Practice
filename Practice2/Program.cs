@@ -20,7 +20,9 @@ namespace Practice2
                 MatrixAlgorithm.TicTacToe,
                 MatrixAlgorithm.ZeroMatrix,
                 ThreadAlgorithm.HandleFizzBuzz,
-                GraphAlgorithm.HandleGraphSearch
+                GraphAlgorithm.HandleGraphSearch,
+                DataStuctureAlgorithm.HandleCustomStack,
+                DataStuctureAlgorithm.HandleSortedBinaryTree
             };
 
             string _;

@@ -32,7 +32,7 @@ namespace Practice2.algorithm
             Console.WriteLine("");
             graph.BFS(element[0]);
 
-            var _ = Console.ReadLine();        
+            var _ = Console.ReadLine();
         }
     }
 }

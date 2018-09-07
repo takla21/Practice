@@ -43,10 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="algorithm\Algorithm.cs" />
+    <Compile Include="algorithm\DataStuctureAlgorithm.cs" />
     <Compile Include="algorithm\GraphAlgorithm.cs" />
     <Compile Include="algorithm\MatrixAlgorithm.cs" />
     <Compile Include="algorithm\ThreadAlgorithm.cs" />
+    <Compile Include="entities\BinaryTree.cs" />
+    <Compile Include="entities\CustomStack.cs" />
     <Compile Include="entities\Graph.cs" />
+    <Compile Include="entities\Node.cs" />
     <Compile Include="entities\Person.cs" />
     <Compile Include="entities\StateMachine.cs" />
     <Compile Include="extra\TicTacToe.cs" />
