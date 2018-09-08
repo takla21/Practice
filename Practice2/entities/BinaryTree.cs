@@ -9,15 +9,18 @@ namespace Practice2.entities
     public class BinaryTree<T> where T : IComparable<T>
     {
         private Node<T> _root { get; set; }
+        private int _size { get; set; }
 
         public BinaryTree()
         {
             _root = null;
+            _size = 0;
         }
-        
+
         public BinaryTree(T[] sortedElement)
         {
             _root = InitBinaryTreeFromSortedArray(sortedElement, 0, sortedElement.Length - 1);
+            _size = sortedElement.Length;
         }
 
         private Node<T> InitBinaryTreeFromSortedArray(T[] element, int i, int j)
@@ -26,7 +29,7 @@ namespace Practice2.entities
             if (size <= 3)
             {
                 var nodes = new Node<T>[size];
-                for (int k =0; k < size; k++)
+                for (int k = 0; k < size; k++)
                 {
                     nodes[k] = new Node<T>(element[i + k], 2);
                 }
@@ -71,6 +74,7 @@ namespace Practice2.entities
         public void Add(T element)
         {
             Add(_root, element);
+            _size++;
         }
 
         public void OrderTraversal()
@@ -78,7 +82,7 @@ namespace Practice2.entities
             OrderTraversal(_root);
             Console.WriteLine();
         }
-        
+
         public void PreOrderTraversal()
         {
             PreOrderTraversal(_root);
@@ -94,6 +98,23 @@ namespace Practice2.entities
         public int Height()
         {
             return Height(_root);
+        }
+
+        public Node<T> GetElement(int index)
+        {
+            var i = _size / 2;
+            if (_size % 2 == 0)
+            {
+                i--;
+            }
+            return GetElement(_root, index, i);
+        }
+
+        public Node<T> GetRandomNode()
+        {
+            var rand = new Random();
+            var index = rand.Next(_size);
+            return GetElement(index);
         }
 
         private void OrderTraversal(Node<T> node)
@@ -155,6 +176,28 @@ namespace Practice2.entities
                 {
                     Add(node.Children[0], element);
                 }
+            }
+        }
+
+        private Node<T> GetElement(Node<T> node, int index, int i)
+        {
+            if (index == i)
+            {
+                return node;
+            }
+
+            if (i >= _size)
+            {
+                return null;
+            }
+
+            if (i > index)
+            {
+                return GetElement(node.Children[0], index, i - 1);
+            }
+            else
+            {
+                return GetElement(node.Children[1], index, i + 1);
             }
         }
     }

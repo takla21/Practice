@@ -14,7 +14,7 @@ namespace Practice2
         {
             var actions = new List<Action>
             {
-                Algorithm.HandleLinkedListSum,
+                DataStuctureAlgorithm.HandleLinkedListSum,
                 Algorithm.HandlePeople,
                 Algorithm.HandleDialNumberWord,
                 MatrixAlgorithm.TicTacToe,
@@ -22,7 +22,8 @@ namespace Practice2
                 ThreadAlgorithm.HandleFizzBuzz,
                 GraphAlgorithm.HandleGraphSearch,
                 DataStuctureAlgorithm.HandleCustomStack,
-                DataStuctureAlgorithm.HandleSortedBinaryTree
+                DataStuctureAlgorithm.HandleSortedBinaryTree,
+                Algorithm.HandleMonochromeScreen
             };
 
             string _;

@@ -11,34 +11,6 @@ namespace Practice2.algorithm
 {
     public class Algorithm
     {
-        public static void HandleLinkedListSum()
-        {
-            Console.WriteLine("Enter 2 number: xxx yyy");
-            string line = Console.ReadLine();
-
-            var firstNumber = line.Substring(0, 3);
-            var secondNumber = line.Substring(4, 3);
-
-            LinkedList<int> firstValue = new LinkedList<int>();
-            LinkedList<int> secondValue = new LinkedList<int>();
-
-            firstValue.AddFirst(Convert.ToInt32(char.GetNumericValue(firstNumber[0])));
-            firstValue.AddFirst(Convert.ToInt32(char.GetNumericValue(firstNumber[1])));
-            firstValue.AddFirst(Convert.ToInt32(char.GetNumericValue(firstNumber[2])));
-
-            secondValue.AddFirst(Convert.ToInt32(char.GetNumericValue(secondNumber[0])));
-            secondValue.AddFirst(Convert.ToInt32(char.GetNumericValue(secondNumber[1])));
-            secondValue.AddFirst(Convert.ToInt32(char.GetNumericValue(secondNumber[2])));
-
-            var result = LinkedListSum(firstValue, secondValue).Last;
-
-            while (result != null)
-            {
-                Console.Write(result.Value);
-                result = result.Previous;
-            }
-        }
-
         public static void HandleDialNumberWord()
         {
             Console.WriteLine("Type four digit here...");
@@ -66,39 +38,23 @@ namespace Practice2.algorithm
             Console.WriteLine("Most people alive was in = " + LivingPeople(peoples));
         }
 
-        private static LinkedList<int> LinkedListSum(LinkedList<int> first, LinkedList<int> second)
+        public static void HandleMonochromeScreen()
         {
-            var resultLinkedList = new LinkedList<int>();
-
-            var firstNode = first.First;
-            var secondNode = second.First;
-            var carried = 0;
-
-            while (firstNode != null || secondNode != null)
+            const int width = 64;
+            const int height = 64;
+            var monochromeScreen = new byte[(width / 8) * height];
+            DrawLine(ref monochromeScreen, width, 10, 50, height / 2);
+            Console.WriteLine("Screen");
+            for (int i = 0; i < (width / 8); i++)
             {
-                var result = firstNode.Value + secondNode.Value + carried;
-                if (result > 9)
+                for (int j = 0; j < height; j++)
                 {
-                    result = result % 10;
-                    carried = 1;
+                    var value = monochromeScreen[j + (i * height)] + "";
+                    value = value.PadLeft(3);
+                    Console.Write(value);
                 }
-                else
-                {
-                    carried = 0;
-                }
-
-                resultLinkedList.AddLast(result);
-
-                firstNode = firstNode.Next;
-                secondNode = secondNode.Next;
+                Console.WriteLine();
             }
-
-            if (carried == 1)
-            {
-                resultLinkedList.AddLast(carried);
-            }
-
-            return resultLinkedList;
         }
 
         private static int LivingPeople(List<Person> peoples)
@@ -188,6 +144,28 @@ namespace Practice2.algorithm
             }
 
             return validWords;
+        }
+
+        private static void DrawLine(ref byte[] screen, int width, int x1, int x2, int y)
+        {
+            var widthBytes = width / 8;
+            var height = screen.Length / widthBytes;
+            var i = x1;
+            int arrayIndex, byteIndex;
+            while (i <= x2)
+            {
+                var index = i + (y * width);
+                arrayIndex = index / 8;
+                byteIndex = (index % 8);
+                byte addedbinary = 128;
+                if (byteIndex > 0)
+                {
+                    byte shift = (byte)(byteIndex + 1);
+                    addedbinary = (byte)(screen[arrayIndex] + (128 >> (shift - 1)));
+                }
+                screen[arrayIndex] = addedbinary;
+                i++;
+            }
         }
     }
 }
